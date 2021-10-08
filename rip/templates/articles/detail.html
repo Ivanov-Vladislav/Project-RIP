@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} {{article.article_title}} {% endblock %}
+
+{% block content %}
+    <div class="book">
+        <div class="book-name">
+            <h2>Название: "{{article.article_title}}"</h2>
+        </div>
+        <div class="book-image">
+
+        </div>
+        <div class="book-author">
+            <p style="font-style: italic">Автор: </p>
+        </div>
+        <div class="book-text">
+            <p style="margin-bottom: 0;font-style: italic">Информация о книге:</p>
+            <p style="margin-top: 0">{{article.article_text}}</p>
+        </div>
+    </div>
+    <style>
+        .book {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+        .book-name {
+            display: flex;
+        }
+        .book-text {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+{% endblock %}
