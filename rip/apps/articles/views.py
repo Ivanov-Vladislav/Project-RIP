@@ -8,6 +8,7 @@ def index(request):
 
 
 def detail(request, article_id):
+    ############################
     try:
         a = Article.objects.get( id = article_id)
     except:
