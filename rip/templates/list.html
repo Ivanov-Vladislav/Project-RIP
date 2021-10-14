@@ -6,7 +6,6 @@
     {% if articles_list %}
         <h1 class="title"> Список Книг</h1>
         <div class="content-list">
-            <a href="http://127.0.0.1:8000/articles/hello">Создать книгу</a>
         {% for a in articles_list %}
             <div name="book-{{ a.id }}" class="block-book">
                 <div class="block-image"> </div>
