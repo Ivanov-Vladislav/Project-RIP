@@ -1,67 +1,29 @@
 {% extends 'base.html' %}
 
-{% block title %} Книги {% endblock %}
+{% block title %} Список книг {% endblock %}
 
 {% block content %}
-    {% if articles_list %}
-        <h1 class="title"> Список Книг</h1>
-        <div class="content-list">
-        {% for a in articles_list %}
-            <div name="book-{{ a.id }}" class="block-book">
-                <div class="block-image"> </div>
-                <div class="block-name"><a class="block-name-url" id="{{ a.id }}" href="{% url 'articles:detail' a.id %}">{{a}}</a></div>
-                <div class="block-author"> </div>
-                <div class="block-genre"> </div>
-            </div>
-        {% endfor %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 sorting-container">
+        Сортировка:
+      </div>
+      {% if list_books %}
+        {% for el in list_books %}
+        <div class="col-md-2">
+          <a href="{% url 'articles:detail' el.id %}" class="card-book">
+            <img class="card-image" src="{{ el.avatar.url }}" alt="Изображение книги">
+            <span class="card-title">{{ el.article_title }}</span>
+          </a>
+          <div class="card-author">{{ el.article_author }}</div>
+          <div class="card-genre">Жанр</div>
         </div>
-    {% endif %}
-    <style>
-        .title {
-            margin: auto;
-            max-width: 1200px;
-            width: 100%;
-            margin-bottom: 50px;
-        }
-        .content-list  {
-            display: flex;
-            flex-direction: row;
-            max-width: 1200px;
-            width: 100%;
-            flex-wrap: wrap;
-            margin: auto;
-        }
-        .block-book {
-            display: flex;
-            flex-direction: column;
-            max-width: 194px;
-            max-height: 194px;
-            min-width: 120px;
-            width: 100%;
-            padding: 10px;
-            margin-right: 25px;
-            border: outset;
-            align-items: center;
-        }
-        .block-book:last-child {
-            margin-right: 0;
-        }
-        .block-image {
-            display: flex;
-            max-width: 200px;
-            max-height: 200px;
-            width: 100%;
-            margin: 0;
-        }
-        .block-name-url {
-            color: black;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        .block-name-url:hover {
-            color: darkblue;
-            text-decoration: underline;
-            font-size: 18px;
-        }
-    </style>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <div class="h3">Список пуст</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}

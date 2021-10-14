@@ -3,10 +3,14 @@ from .models import Articles11
 from .forms import Task1Form
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 
-def index(request):
-    articles_list = Articles11.objects.all()
-    return render(request, 'articles/list.html', {'articles_list': articles_list})
 
+def main(request):
+    return render(request, 'base.html')
+
+
+def list(request):
+    list_books = Articles11.objects.all()
+    return render(request, 'list.html', {'list_books': list_books})
 
 
 def detail(request, article_id):
