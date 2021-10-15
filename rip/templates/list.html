@@ -7,11 +7,12 @@
     <div class="row">
       <div class="col-12 sorting-container">
         Сортировка:
+        <a href="http://127.0.0.1:8000/articles/hello">Создать книгу</a>
       </div>
       {% if list_books %}
         {% for el in list_books %}
-        <div class="col-md-2">
-          <a href="{% url 'articles:detail' el.id %}" class="card-book">
+        <div class="col-md-2 list-block">
+          <a href="/{{ el.id }}" class="card-book"> {# {% url 'articles:detail' el.id %} #}
             <img class="card-image" src="{{ el.avatar.url }}" alt="Изображение книги">
             <span class="card-title">{{ el.article_title }}</span>
           </a>
